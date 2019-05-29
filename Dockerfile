@@ -2,7 +2,7 @@ FROM alpine:latest
 LABEL Author=<diestel@steloj.de>
 ARG FTP_USER=sesio
 
-RUN apk --update add vsftpd db-utils && rm -f /var/cache/apk/* 
+RUN apk --update add vsftpd && rm -f /var/cache/apk/* 
 
 COPY ./etc/* /etc/vsftpd/
 
