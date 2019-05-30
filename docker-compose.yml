@@ -1,0 +1,23 @@
+version: '3.1'
+
+services:
+  sesio:
+    image: voko-sesio
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    # restart: always
+    ports:
+      - 21:21
+      - 21200-21210:21200-21210
+    secrets:
+      - voko-sesio.ftp-password         
+
+secrets:
+  voko-sesio.ftp-password:
+    external: true
+
+
+  
+
+

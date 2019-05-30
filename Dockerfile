@@ -4,10 +4,11 @@ ARG FTP_USER=sesio
 
 RUN apk --update add vsftpd && rm -f /var/cache/apk/* 
 
-COPY ./etc/* /etc/vsftpd/
+COPY ./etc/* /etc/
+COPY ./bin/* /usr/local/bin/
 
-RUN useradd -ms /bin/bash -u 13731 ${FTP_USER} \
-    && mkdir -p "/home/${FTP_USER}/ftp" && chown -R ftp:ftp /home/vsftpd/
+RUN adduser -D -u 13731 ${FTP_USER} \
+    && mkdir -p "/home/${FTP_USER}/ftp" && chown -R ftp:ftp /home/${FTP_USER}
 #    && mkdir -p "/home/vsftpd/${FTP_USER}" && chown -R ftp:ftp /home/vsftpd/
 
 # Create / update vsftpd user db:
@@ -34,5 +35,8 @@ EXPOSE 20 21
 # Run vsftpd:
 #/usr/sbin/vsftpd /etc/vsftpd/vsftpd.conf
 
-USER vsftp:ftp
+#USER vsftp:ftp
+USER root
+
+ENTRYPOINT ["docker-entrypoint.sh"]
 CMD ["/usr/sbin/vsftpd"]
