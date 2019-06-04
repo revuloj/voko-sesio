@@ -31,7 +31,7 @@ RUN adduser -D -u 13731 ${FTP_USER} \
 ##VOLUME /home/vsftpd
 ##VOLUME /var/log/vsftpd
 ##
-EXPOSE 20 21
+EXPOSE 21
   
 # Run vsftpd:
 #/usr/sbin/vsftpd /etc/vsftpd/vsftpd.conf
