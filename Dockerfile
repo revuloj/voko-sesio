@@ -8,8 +8,8 @@ COPY ./etc/* /etc/
 COPY ./bin/* /usr/local/bin/
 
 RUN adduser -D -u 13731 ${FTP_USER} \
-    && mkdir -p "/home/vsftpd/${FTP_USER}" && chown -R ftp:ftp /home/vsftpd \
-    && chmod a-w /home/vsftpd && chown ${FTP_USER}:${FTP_USER} /home/vsftpd/${FTP_USER}
+    && mkdir -p "/home/vsftpd/alveno" && chown -R ftp:ftp /home/vsftpd \
+    && chmod a-w /home/vsftpd && chown ${FTP_USER}:${FTP_USER} /home/vsftpd/alveno
 #    && mkdir -p "/home/vsftpd/${FTP_USER}" && chown -R ftp:ftp /home/vsftpd/
 
 # Create / update vsftpd user db:
